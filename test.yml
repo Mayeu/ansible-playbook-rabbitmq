@@ -1,0 +1,6 @@
+---
+- hosts: all
+  user: vagrant
+  sudo: yes
+  tasks:
+    - include: tasks/main.yml
