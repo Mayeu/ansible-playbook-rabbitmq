@@ -1,0 +1,3 @@
+---
+rabbitmq.conf.tcp.listeners: ''
+rabbitmq.conf.ssl.listeners: 5671
