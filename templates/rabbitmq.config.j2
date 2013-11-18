@@ -1,7 +1,7 @@
 [
   {rabbit, [
-    {tcp_listeners, [{{rabbitmq.conf.tcp.listeners}}]},
-    {ssl_listeners, [{{rabbitmq.conf.ssl.listeners}}]},
+    {tcp_listeners, [{{rabbitmq_conf_tcp_listeners}}]},
+    {ssl_listeners, [{{rabbitmq_conf_ssl_listeners}}]},
     {ssl_options, [
       {cacertfile, "/etc/rabbitmq/ssl/cacert.pem"},
       {certfile, "/etc/rabbitmq/ssl/server_cert.pem"},
@@ -10,4 +10,4 @@
       {fail_if_no_peer_cert,true}
       ]}
   ]}
-]
+].
