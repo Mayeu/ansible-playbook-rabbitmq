@@ -8,7 +8,12 @@ rabbitmq: {
       listeners: ''
       },
     ssl: {
-      listeners: 5671
+      listeners: 5671,
+      options: {
+        cacertfile: "/etc/rabbitmq/ssl/cacert.pem",
+        certfile: "/etc/rabbitmq/ssl/server_cert.pem",
+        keyfile: "/etc/rabbitmq/ssl/server_key.pem"
+      }
       }
   }
 }

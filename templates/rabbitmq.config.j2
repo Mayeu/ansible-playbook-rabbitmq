@@ -3,9 +3,9 @@
     {tcp_listeners, [{{rabbitmq.conf.tcp.listeners}}]},
     {ssl_listeners, [{{rabbitmq.conf.ssl.listeners}}]},
     {ssl_options, [
-      {cacertfile, "/etc/rabbitmq/ssl/cacert.pem"},
-      {certfile, "/etc/rabbitmq/ssl/server_cert.pem"},
-      {keyfile, "/etc/rabbitmq/ssl/server_key.pem"},
+      {cacertfile, "{{rabbitmq.conf.ssl.options.cacertfile}}"},
+      {certfile, "{{rabbitmq.conf.ssl.options.certfile}}"},
+      {keyfile, "{{rabbitmq.conf.ssl.options.keyfile}}"},
       {verify, verify_peer},
       {fail_if_no_peer_cert,true}
       ]}
