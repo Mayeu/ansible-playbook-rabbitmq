@@ -1,3 +1,14 @@
 ---
-rabbitmq_conf_tcp_listeners: ''
-rabbitmq_conf_ssl_listeners: 5671
+# Rabbitmq namespace
+rabbitmq: {
+
+  # Conf namespace
+  conf: {
+    tcp: {
+      listeners: ''
+      },
+    ssl: {
+      listeners: 5671
+      }
+  }
+}
