@@ -1,19 +1,19 @@
 ---
 # Rabbitmq namespace
-rabbitmq: {
+rabbitmq:
 
   # Conf namespace
-  conf: {
-    tcp: {
-      listeners: ''
-      },
-    ssl: {
-      listeners: 5671,
-      options: {
-        cacertfile: "/etc/rabbitmq/ssl/cacert.pem",
-        certfile: "/etc/rabbitmq/ssl/server_cert.pem",
+  conf:
+    tcp: 
+      listeners:
+        address: '127.0.0.1'
+        port: 5672
+
+    ssl:
+      listeners:
+        address: '127.0.0.1'
+        port: 5671
+      options:
+        cacertfile: "/etc/rabbitmq/ssl/cacert.pem"
+        certfile: "/etc/rabbitmq/ssl/server_cert.pem"
         keyfile: "/etc/rabbitmq/ssl/server_key.pem"
-      }
-      }
-  }
-}

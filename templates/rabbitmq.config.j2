@@ -1,7 +1,7 @@
 [
   {rabbit, [
-    {tcp_listeners, [{{rabbitmq.conf.tcp.listeners}}]},
-    {ssl_listeners, [{{rabbitmq.conf.ssl.listeners}}]},
+    {tcp_listeners, [{"{{ rabbitmq.conf.tcp.listeners.address }}", {{ rabbitmq.conf.tcp.listeners.port }}}]},
+    {ssl_listeners, [{"{{ rabbitmq.conf.ssl.listeners.address }}", {{ rabbitmq.conf.ssl.listeners.port }}}]},
     {ssl_options, [
       {cacertfile, "{{rabbitmq.conf.ssl.options.cacertfile}}"},
       {certfile, "{{rabbitmq.conf.ssl.options.certfile}}"},
