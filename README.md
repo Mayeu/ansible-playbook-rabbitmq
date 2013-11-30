@@ -16,12 +16,17 @@ ansible anyway.
 
 ###Using it
 
-You have to put the needed certificates in your `files/` folder:
+You have to put the needed certificates in your `files/` folder, those will be
+used to encrypt the communication between your different host:
 
     files/
      |- rabbitmq_cacert.pem
      |- rabbitmq_server_cert.pem
      |- rabbitmq_server_key.pem
+
+Please note that the `files` folder of this repository contains dummy
+certificate. You should **not** use them. Your certificate will get precedence
+over the ones of this role if put in your root `files` folder.
 
 ##Test
 
