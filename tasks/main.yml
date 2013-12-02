@@ -25,7 +25,7 @@
 
 - name: copy ssl certificate
   copy:
-    src=rabbitmq_{{ item }}.pem
+    src=files/rabbitmq_{{ item }}.pem
     dest=/etc/rabbitmq/ssl/{{ item }}.pem
     owner=rabbitmq
     group=rabbitmq 
