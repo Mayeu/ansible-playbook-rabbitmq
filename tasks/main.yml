@@ -44,7 +44,9 @@
     group=rabbitmq
     mode=0644
     backup=yes
-  notify: restart rabbitmq-server
+
+- name: restart rabbitmq-server
+  service: name=rabbitmq-server state=restarted
 
 - name: enable rabbitmq-server to survive reboot
   service: name=rabbitmq-server enabled=yes
