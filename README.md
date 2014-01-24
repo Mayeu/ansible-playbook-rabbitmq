@@ -1,20 +1,36 @@
-#Rabbitmq Playbook
+# Rabbitmq Playbook
 
-(really) Simple playbook to install and configure rabbitmq. Will come with
-various configuration tweaking later on :)
+Playbook to install and configure rabbitmq. Will come with various
+configuration tweaking later on.
 
-##Supported system
+## Supported system
 
-Currently only Debian Jessie amd64 is supported and tested. Patch welcome to
-support other OS.
+Currently only Debian Jessie amd64 is tested. Patch welcome to support other
+OS.
 
-##Installation
+## Installation
 
 Just clone (or submodule) this repository under the name `rabbitmq` in your
 `roles` directory. This file, `test.yml` and `Vagrantfile` will be ignored by
 ansible anyway.
 
-###Using it
+## Using it
+
+### Variables
+
+
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
+`rabbitmq_conf_tcp_listeners_address`|String|listening address for the tcp interface|'127.0.0.1'
+`rabbitmq_conf_tcp_listeners_port`|Integer|listening port for the tcp interface|5672
+`
+`rabbitmq_conf_ssl_listeners_address`|String|listening address for the ssl interface|'127.0.0.1'
+`rabbitmq_conf_ssl_listeners_port`|Integer|listening port for the ssl interface|5671
+`rabbitmq_conf_ssl_options_cacertfile`|String|Path the CA certificate|"/etc/rabbitmq/ssl/cacert.pem"
+`rabbitmq_conf_ssl_options_certfile`|String|Path to the server certificate|"/etc/rabbitmq/ssl/server_cert.pem"
+`rabbitmq_conf_ssl_options_keyfile`|String|Path to the private key file|"/etc/rabbitmq/ssl/server_key.pem"
+
+### Files
 
 You have to put the needed certificates in your `files/` folder:
 
@@ -23,7 +39,7 @@ You have to put the needed certificates in your `files/` folder:
      |- rabbitmq_server_cert.pem
      |- rabbitmq_server_key.pem
 
-##Test
+## Test
 
 There is some really basic tests with the playbook. It just try to install
 rabbitmq in a vagrant VM. Just run:
