@@ -1,11 +1,11 @@
 [
   {rabbit, [
-    {tcp_listeners, [{"{{ rabbitmq.conf.tcp.listeners.address }}", {{ rabbitmq.conf.tcp.listeners.port }}}]},
-    {ssl_listeners, [{"{{ rabbitmq.conf.ssl.listeners.address }}", {{ rabbitmq.conf.ssl.listeners.port }}}]},
+    {tcp_listeners, [{"{{ rabbitmq_conf_tcp_listeners_address }}", {{ rabbitmq_conf_tcp_listeners_port }}}]},
+    {ssl_listeners, [{"{{ rabbitmq_conf_ssl_listeners_address }}", {{ rabbitmq_conf_ssl_listeners_port }}}]},
     {ssl_options, [
-      {cacertfile, "{{rabbitmq.conf.ssl.options.cacertfile}}"},
-      {certfile, "{{rabbitmq.conf.ssl.options.certfile}}"},
-      {keyfile, "{{rabbitmq.conf.ssl.options.keyfile}}"},
+      {cacertfile, "{{rabbitmq_conf_ssl_options_cacertfile}}"},
+      {certfile, "{{rabbitmq_conf_ssl_options_certfile}}"},
+      {keyfile, "{{rabbitmq_conf_ssl_options_keyfile}}"},
       {verify, verify_peer},
       {fail_if_no_peer_cert,true}
       ]}
