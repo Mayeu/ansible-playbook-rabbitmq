@@ -23,7 +23,6 @@ ansible anyway.
 |----|----|-----------|-------|
 `rabbitmq_conf_tcp_listeners_address`|String|listening address for the tcp interface|'127.0.0.1'
 `rabbitmq_conf_tcp_listeners_port`|Integer|listening port for the tcp interface|5672
-`
 `rabbitmq_conf_ssl_listeners_address`|String|listening address for the ssl interface|'127.0.0.1'
 `rabbitmq_conf_ssl_listeners_port`|Integer|listening port for the ssl interface|5671
 `rabbitmq_conf_ssl_options_cacertfile`|String|Path the CA certificate|"/etc/rabbitmq/ssl/cacert.pem"
