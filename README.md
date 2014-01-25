@@ -28,6 +28,20 @@ ansible anyway.
 `rabbitmq_conf_ssl_options_cacertfile`|String|Path the CA certificate|"/etc/rabbitmq/ssl/cacert.pem"
 `rabbitmq_conf_ssl_options_certfile`|String|Path to the server certificate|"/etc/rabbitmq/ssl/server_cert.pem"
 `rabbitmq_conf_ssl_options_keyfile`|String|Path to the private key file|"/etc/rabbitmq/ssl/server_key.pem"
+`rabbitmq_vhost_definitions`|List of hash|Define the vhost, and associated users and password (see below)|Not defined
+
+Defining the vhost configuration:
+
+```yaml
+rabbitmq_vhost_definitions:
+  - vhost   : vhost1
+    user    : user1
+    password: password1
+  - vhost   : vhost2
+    user    : user2
+    password: password2
+```
+
 
 ### Files
 
