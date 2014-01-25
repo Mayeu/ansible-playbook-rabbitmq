@@ -1,0 +1,5 @@
+---
+rabbitmq_vhost_definitions:
+  - vhost   : sensu
+    user    : sensu
+    password: placeholder

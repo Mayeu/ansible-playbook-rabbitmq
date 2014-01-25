@@ -4,6 +4,7 @@
   sudo: yes
   vars_files:
     - defaults/main.yml
+    - vars/test.yml
   tasks:
     - include: tasks/main.yml
   handlers:
