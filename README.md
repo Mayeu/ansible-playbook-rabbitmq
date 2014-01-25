@@ -3,21 +3,15 @@
 Playbook to install and configure rabbitmq. Will come with various
 configuration tweaking later on.
 
+If you wish to discuss modifications, or help to support more plateforms, open
+an issue.
+
 ## Supported system
 
-Currently only Debian Jessie amd64 is tested. Patch welcome to support other
-OS.
+Currently only Debian Jessie and Wheezy on amd64 is supported. Patch welcome to
+support other OS.
 
-## Installation
-
-Just clone (or submodule) this repository under the name `rabbitmq` in your
-`roles` directory. This file, `test.yml` and `Vagrantfile` will be ignored by
-ansible anyway.
-
-## Using it
-
-### Variables
-
+### Role Variables
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
@@ -42,8 +36,7 @@ rabbitmq_vhost_definitions:
     password: password2
 ```
 
-
-### Files
+## Files required
 
 You have to put the needed certificates in your `files/` folder:
 
@@ -52,11 +45,6 @@ You have to put the needed certificates in your `files/` folder:
      |- rabbitmq_server_cert.pem
      |- rabbitmq_server_key.pem
 
-## Test
+## License
 
-There is some really basic tests with the playbook. It just try to install
-rabbitmq in a vagrant VM. Just run:
-
-    $ vagrant up
-
-and the VM will be provisioned by ansible with the test.yml.
+BSD

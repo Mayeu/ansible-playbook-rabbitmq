@@ -1,4 +1,5 @@
 ---
+# vars file for rabbitmq test
 rabbitmq_vhost_definitions:
   - vhost   : sensu
     user    : sensu
