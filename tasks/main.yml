@@ -49,14 +49,14 @@
   service: name=rabbitmq-server enabled=yes
 
 - name: add rabbitmq vhost
-  rabbitmq_vhost: name=/{{ item }} state=present
+  rabbitmq_vhost: name={{ item }} state=present
   with_items: rabbitmq_vhost_definitions
 
 - name: add rabbitmq user and set priveleges
   rabbitmq_user:
     user={{ item.user }}
     password="{{ item.password }}"
-    vhost=/{{ item.vhost }}
+    vhost={{ item.vhost }}
     configure_priv=.*
     read_priv=.*
     write_priv=.*
