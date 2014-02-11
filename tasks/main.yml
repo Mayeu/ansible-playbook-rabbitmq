@@ -48,18 +48,5 @@
 - name: enable rabbitmq-server to survive reboot
   service: name=rabbitmq-server enabled=yes
 
-- name: add rabbitmq vhost
-  rabbitmq_vhost: name={{ item }} state=present
-  with_items: rabbitmq_vhost_definitions
+- include: vhost.yml
 
-- name: add rabbitmq user and set priveleges
-  rabbitmq_user:
-    user={{ item.user }}
-    password="{{ item.password }}"
-    vhost={{ item.vhost }}
-    configure_priv=.*
-    read_priv=.*
-    write_priv=.*
-    state=present
-    force=yes
-  with_items: rabbitmq_users_definitions
