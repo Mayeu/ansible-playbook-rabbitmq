@@ -9,7 +9,7 @@
       {certfile, "{{rabbitmq_conf_ssl_options_certfile}}"},
       {keyfile, "{{rabbitmq_conf_ssl_options_keyfile}}"},
       {verify, verify_peer},
-      {fail_if_no_peer_cert,true}
+      {fail_if_no_peer_cert,{{rabbitmq_conf_ssl_options_fail_if_no_peer_cert}}}
       ]}
   ]}
 ].

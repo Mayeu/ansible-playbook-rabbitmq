@@ -25,6 +25,7 @@ support other OS.
 `rabbitmq_conf_ssl_options_cacertfile`|String|Path the CA certificate|`"/etc/rabbitmq/ssl/cacert.pem"`
 `rabbitmq_conf_ssl_options_certfile`|String|Path to the server certificate|`"/etc/rabbitmq/ssl/server_cert.pem"`
 `rabbitmq_conf_ssl_options_keyfile`|String|Path to the private key file|`"/etc/rabbitmq/ssl/server_key.pem"`
+`rabbitmq_conf_ssl_options_fail_if_no_peer_cert`|Boolean|Value of the `fail_if_no_peer_cert` SSL option|"true"
 `rabbitmq_vhost_definitions`|List|Define the list of vhost to create|Not defined
 `rabbitmq_users_definitions`|List of hash|Define the users, and associated vhost and password (see below)|Not defined
 
