@@ -1,6 +1,10 @@
 ---
 # defaults file for rabbitmq
 
+rabbitmq_cacert     : "cacert"
+rabbitmq_server_key : "server_key"
+rabbitmq_server_cert: "server_cert"
+
 # rabbitmq TCP configuration
 rabbitmq_conf_tcp_listeners_address: ''
 rabbitmq_conf_tcp_listeners_port: 5672

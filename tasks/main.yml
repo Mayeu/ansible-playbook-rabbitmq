@@ -31,9 +31,9 @@
     mode=0640
     backup=yes
   with_items:
-    - cacert
-    - server_key
-    - server_cert
+    - "{{ rabbitmq_cacert }}"
+    - "{{ rabbitmq_server_key }}"
+    - "{{ rabbitmq_server_cert }}"
 
 - name: generate the configuration of rabbitmq
   template:

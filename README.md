@@ -15,6 +15,9 @@ support other OS.
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
+`rabbitmq_cacert`|String|Name of the CA certificate file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`cacert`
+`rabbitmq_server_key`|String|Name of the SSL key file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`server_key`
+`rabbitmq_cert_key`|String|Name of the SSL certificate file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`server_cert`
 `rabbitmq_conf_tcp_listeners_address`|String|listening address for the tcp interface|`''`
 `rabbitmq_conf_tcp_listeners_port`|Integer|listening port for the tcp interface|`5672`
 `rabbitmq_conf_ssl_listeners_address`|String|listening address for the ssl interface|'0.0.0.0'`
@@ -42,9 +45,9 @@ rabbitmq_users_definitions:
 You have to put the needed certificates in your `files/` folder:
 
     files/
-     |- rabbitmq_cacert.pem
-     |- rabbitmq_server_cert.pem
-     |- rabbitmq_server_key.pem
+     |- rabbitmq_{{ rabbitmq_cacert }}.pem
+     |- rabbitmq_{{ rabbitmq_server_key }}.pem
+     |- rabbitmq_{{ rabbitmq_server_cert }}.pem
 
 ## License
 
