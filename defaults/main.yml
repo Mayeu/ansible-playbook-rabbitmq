@@ -1,9 +1,19 @@
 ---
-# defaults file for rabbitmq
+# ################
+# Playbook control
+# ################
 
+# Avoid setting up federation
+rabbitmq_federation: false
+
+# defaults file for rabbitmq
 rabbitmq_cacert     : "cacert"
 rabbitmq_server_key : "server_key"
 rabbitmq_server_cert: "server_cert"
+
+# ######################
+# RabbitMQ Configuration
+# ######################
 
 # rabbitmq TCP configuration
 rabbitmq_conf_tcp_listeners_address: ''

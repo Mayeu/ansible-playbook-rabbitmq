@@ -1,0 +1,22 @@
+---
+- name: active the federation plugin
+  rabbitmq_plugin: names=rabbitmq_federation state=enabled
+
+- name: restart RabbitMQ to be able to setup federation
+  service: name=rabbitmq-server state=restarted
+
+- name: set the federation-upstream parameter
+  rabbitmq_parameter:
+    component=federation-upstream
+    name="{{ item.name }}"
+    vhost="{{ item.vhost | default('/', false) }}"
+    value='{{ item.value }}'
+  with_items: rabbitmq_federation_configuration
+
+- name: set the policy for the federation
+  rabbitmq_policy:
+    name={{ item.name }}
+    vhost={{ item.vhost | default('/', false) }}
+    pattern="{{ item.pattern }}"
+    tags="{{ item.tags }}"
+  with_items: rabbitmq_policy_configuration
