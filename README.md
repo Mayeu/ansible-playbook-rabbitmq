@@ -56,19 +56,31 @@ rabbitmq_users_definitions:
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
 `rabbitmq_federation`|Boolean|Define if we need to setup federation|`false`
-`rabbitmq_federation_upstream|List of hashes|Define all the federation we need to setup|Not defined
+`rabbitmq_federation_configuration|List of hashes|Define all the federation we need to setup|Not defined
+`rabbitmq_policy_configuration|List of hashes|Define all the federation we need to setup|Not defined
 
 Defining the federation upstream configuration:
 
 ```yaml
 rabbitmq_federation_upstream:
-  - name: name_of_the_upstream
-    vhost: local_vhost_to_federate
-    value: json_value
+  - name: upstream name
+    vhost: local vhost to federate
+    value: json description of the federation
+    local_username: the local username for the federation
 ```
 
 See the [RabbitMQ documentation](http://www.rabbitmq.com/federation.html) for
 the possible JSON value.
+
+Defining the policy configuration:
+
+```yaml
+rabbitmq_policy_configuration:
+  - name: name of the policy
+    vhost: vhost where the policy will be applied
+    pattern: pattern of the policy
+    tags: description of the policy in dict form # exemple: "ha-mode=all"
+```
 
 ## Files required
 

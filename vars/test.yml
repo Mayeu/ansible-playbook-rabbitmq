@@ -14,6 +14,7 @@ rabbitmq_federation_configuration:
   - name: test
     vhost: '/'
     value: '{"uri":"amqp://server-name","expires":3600000}'
+    local_username: sensu
 
 rabbitmq_policy_configuration:
   - name: policy

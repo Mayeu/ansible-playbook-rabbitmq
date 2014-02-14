@@ -20,3 +20,12 @@
     pattern="{{ item.pattern }}"
     tags="{{ item.tags }}"
   with_items: rabbitmq_policy_configuration
+
+- name: set the local username for the federation
+  rabbitmq_parameter:
+    component=federation
+    name=local-username
+    value='"{{ item.local_username | default( 'guest', false ) }}"'
+    vhost={{ item.vhost | default( '/', false) }}
+    state=present
+  with_items: rabbitmq_federation_configuration
