@@ -1,9 +1,11 @@
 ---
 - name: active the federation plugin
   rabbitmq_plugin: names=rabbitmq_federation state=enabled
+  register: federation_plugin
 
 - name: restart RabbitMQ to be able to setup federation
   service: name=rabbitmq-server state=restarted
+  when: federation_plugin.changed
 
 - name: set the federation-upstream parameter
   rabbitmq_parameter:
