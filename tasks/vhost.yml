@@ -8,6 +8,7 @@
     user={{ item.user }}
     password="{{ item.password }}"
     vhost={{ item.vhost | default('/', false) }}
+    tags={{ (item.tags|default(''))|join(',') }}
     configure_priv=.*
     read_priv=.*
     write_priv=.*
