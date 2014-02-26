@@ -50,6 +50,8 @@ rabbitmq_users_definitions:
   - vhost   : vhost1
     user    : user2
     password: password2
+    tags
+    - administrator
 ```
 #### Federation
 
