@@ -19,6 +19,7 @@ support other OS.
 `rabbitmq_cacert`|String|Name of the CA certificate file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`cacert`
 `rabbitmq_server_key`|String|Name of the SSL key file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`server_key`
 `rabbitmq_cert_key`|String|Name of the SSL certificate file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`server_cert`
+`rabbitmq_ssl`|Boolean|Define if we need to use SSL|`true`
 
 #### Default configuration file
 

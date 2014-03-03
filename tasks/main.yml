@@ -21,6 +21,7 @@
     group=rabbitmq
     mode=0750
     state=directory
+  when: rabbitmq_ssl
 
 - name: copy the ssl certificates
   copy:
@@ -34,6 +35,7 @@
     - "{{ rabbitmq_cacert }}"
     - "{{ rabbitmq_server_key }}"
     - "{{ rabbitmq_server_cert }}"
+  when: rabbitmq_ssl
 
 - name: generate the configuration of rabbitmq
   template:
