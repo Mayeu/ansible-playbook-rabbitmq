@@ -13,7 +13,7 @@
     read_priv=.*
     write_priv=.*
     state=present
-    force=yes
+    force="{{ item.force|default('yes') }}"
   with_items: rabbitmq_users_definitions
 
 - name: remove guest user
