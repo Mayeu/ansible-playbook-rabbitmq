@@ -8,6 +8,8 @@ rabbitmq_users_definitions:
     user    : sensu
     password: placeholder
 
+rabbitmq_ssl: true
+
 rabbitmq_federation: true
 
 rabbitmq_federation_configuration:

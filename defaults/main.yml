@@ -10,6 +10,7 @@ rabbitmq_federation: false
 rabbitmq_cacert     : "cacert"
 rabbitmq_server_key : "server_key"
 rabbitmq_server_cert: "server_cert"
+rabbitmq_ssl        : true
 
 # ######################
 # RabbitMQ Configuration
