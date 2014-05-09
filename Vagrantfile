@@ -1,6 +1,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "jessie"
+  config.vm.hostname = "vagrantup"
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "test.yml"
