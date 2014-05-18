@@ -47,6 +47,11 @@
     backup=yes
   notify: restart rabbitmq-server
 
+- name: enable plugins
+  rabbitmq_plugin: names={{ rabbitmq_plugins | join(',') }} state=enabled
+  notify: restart rabbitmq-server
+  when: rabbitmq_plugins != []
+
 - name: enable rabbitmq-server to survive reboot
   service: name=rabbitmq-server enabled=yes
 
