@@ -34,6 +34,13 @@ support other OS.
 `rabbitmq_conf_ssl_options_keyfile`|String|Path to the private key file|`"/etc/rabbitmq/ssl/server_key.pem"`
 `rabbitmq_conf_ssl_options_fail_if_no_peer_cert`|Boolean|Value of the `fail_if_no_peer_cert` SSL option|"true"
 
+#### Plugins
+
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
+`rabbitmq_new_only`|String|Add plugins as new, without deactivating other plugins|`'no'`
+`rabbitmq_plugins`|String|List|List of plugins to activate|`[]`
+
 #### Vhost
 
 |Name|Type|Description|Default|
