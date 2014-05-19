@@ -1,4 +1,5 @@
 ---
+
 # vars file for rabbitmq test
 rabbitmq_vhost_definitions:
   - sensu
@@ -8,9 +9,9 @@ rabbitmq_users_definitions:
     user    : sensu
     password: placeholder
 
-rabbitmq_ssl: true
+rabbitmq_ssl: false
 
-rabbitmq_federation: true
+rabbitmq_federation: false
 
 rabbitmq_federation_configuration:
   - name: test
