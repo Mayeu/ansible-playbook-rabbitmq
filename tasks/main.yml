@@ -48,7 +48,7 @@
   notify: restart rabbitmq-server
 
 - name: enable plugins
-  rabbitmq_plugin: names={{ rabbitmq_plugins | join(',') }} state=enabled
+  rabbitmq_plugin: names={{ rabbitmq_plugins | join(',') }} state=enabled new_only={{ rabbitmq_new_only }}
   notify: restart rabbitmq-server
   when: rabbitmq_plugins != []
 

@@ -3,6 +3,10 @@
 # Playbook control
 # ################
 
+# Plugins
+rabbitmq_plugins: []
+rabbitmq_new_only: 'no'
+
 # Avoid setting up federation
 rabbitmq_federation: false
 
@@ -27,5 +31,3 @@ rabbitmq_conf_ssl_options_cacertfile          : "/etc/rabbitmq/ssl/cacert.pem"
 rabbitmq_conf_ssl_options_certfile            : "/etc/rabbitmq/ssl/server_cert.pem"
 rabbitmq_conf_ssl_options_keyfile             : "/etc/rabbitmq/ssl/server_key.pem"
 rabbitmq_conf_ssl_options_fail_if_no_peer_cert: "true"
-
-rabbitmq_plugins: []
