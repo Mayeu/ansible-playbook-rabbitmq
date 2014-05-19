@@ -45,8 +45,8 @@ support other OS.
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
-`rabbitmq_vhost_definitions`|List|Define the list of vhost to create|Not defined
-`rabbitmq_users_definitions`|List of hash|Define the users, and associated vhost and password (see below)|Not defined
+`rabbitmq_vhost_definitions`|List|Define the list of vhost to create|`[]`
+`rabbitmq_users_definitions`|List of hash|Define the users, and associated vhost and password (see below)|`[]`
 
 Defining the users configuration:
 

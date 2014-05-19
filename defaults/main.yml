@@ -7,6 +7,10 @@
 rabbitmq_plugins: []
 rabbitmq_new_only: 'no'
 
+# VHOST
+rabbitmq_vhost_definitions: []
+rabbitmq_users_definitions: []
+
 # Avoid setting up federation
 rabbitmq_federation: false
 
