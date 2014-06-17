@@ -45,6 +45,18 @@
     group=rabbitmq
     mode=0644
     backup=yes
+
+- name: ensure rabbitmq is stopped before changing environment config
+  service: name=rabbitmq-server state=stopped
+
+- name: generate the environment of rabbitmq
+  template:
+    src=rabbitmq-env.conf.j2
+    dest=/etc/rabbitmq/rabbitmq-env.conf
+    owner=rabbitmq
+    group=rabbitmq
+    mode=0644
+    backup=yes
   notify: restart rabbitmq-server
 
 - name: enable plugins
