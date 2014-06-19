@@ -24,3 +24,7 @@ rabbitmq_policy_configuration:
     pattern: '.'
     vhost: sensu
     tags: "federation-upstream-set=all"
+
+rabbitmq_env: true
+rabbitmq_conf_env:
+  RABBITMQ_ROCKS: correct
