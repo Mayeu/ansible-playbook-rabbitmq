@@ -5,8 +5,8 @@
 - name: add rabbitmq vhost
   rabbitmq_vhost: >
     name={{ item.name }}
-    node={{ item.node|default('rabbit') }}
-    tracing={{ item.tracing|default('no')}}
+    node={{ item.node | default('rabbit') }}
+    tracing={{ item.tracing | default('no') }}
     state=present
   with_items: rabbitmq_vhost_definitions
 
