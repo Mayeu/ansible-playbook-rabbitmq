@@ -2,7 +2,7 @@
 
 # vars file for rabbitmq test
 rabbitmq_vhost_definitions:
-  - sensu
+  - name: sensu
 
 rabbitmq_users_definitions:
   - vhost   : sensu
@@ -25,6 +25,5 @@ rabbitmq_policy_configuration:
     vhost: sensu
     tags: "federation-upstream-set=all"
 
-rabbitmq_env: true
 rabbitmq_conf_env:
   RABBITMQ_ROCKS: correct

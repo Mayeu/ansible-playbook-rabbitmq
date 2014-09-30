@@ -56,7 +56,7 @@
     mode=0644
     backup=yes
   notify: restart rabbitmq-server
-  when: rabbitmq_env
+  when: rabbitmq_conf_env is defined
 
 - name: enable plugins
   rabbitmq_plugin: names={{ rabbitmq_plugins | join(',') }} state=enabled new_only={{ rabbitmq_new_only }}
