@@ -1,6 +1,6 @@
 ---
 # tasks file for rabbitmq
-- name: add the official rabbitmq repository's key
+- name: "add the official rabbitmq repository's key"
   apt_key: url=https://www.rabbitmq.com/rabbitmq-signing-key-public.asc state=present
 
 - name: add the official rabbitmq repository
