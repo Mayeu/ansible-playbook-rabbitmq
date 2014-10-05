@@ -67,8 +67,8 @@ rabbitmq_users_definitions:
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
 `rabbitmq_federation`|Boolean|Define if we need to setup federation|`false`
-`rabbitmq_federation_configuration|List of hashes|Define all the federation we need to setup|Not defined
-`rabbitmq_policy_configuration|List of hashes|Define all the federation we need to setup|Not defined
+`rabbitmq_federation_configuration`|List of hashes|Define all the federation we need to setup|Not defined
+`rabbitmq_policy_configuration`|List of hashes|Define all the federation we need to setup|Not defined
 
 Defining the federation upstream configuration:
 
