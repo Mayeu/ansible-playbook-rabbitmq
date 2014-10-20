@@ -1,4 +1,2 @@
 ---
-- hosts: all
-  roles:
-    - rabbitmq
+- include: standalone.yml
