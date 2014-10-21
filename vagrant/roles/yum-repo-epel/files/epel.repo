@@ -1,0 +1,7 @@
+[epel]
+name=Extra Packages for EPEL 6 - $basearch
+baseurl=http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/x86_64/
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+enabled=1
+gpgcheck=1
+

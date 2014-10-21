@@ -1,0 +1,9 @@
+---
+
+- include: debian.yml
+  when: ansible_distribution == "debian"
+
+- include: centos.yml
+  when: ansible_distribution == 'CentOS'
+
+- include: common.yml
