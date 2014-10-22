@@ -41,3 +41,4 @@ rabbitmq_conf_ssl_options_fail_if_no_peer_cert: "true"
 
 
 rabbitmq_bin_path: "/usr/lib/rabbitmq/bin/"
+rabbitmq_prefix: "/usr/lib/rabbitmq/"
