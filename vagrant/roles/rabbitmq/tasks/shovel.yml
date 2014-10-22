@@ -1,0 +1,47 @@
+---
+- name: active the rabbitmq_management_agent plugin
+  rabbitmq_plugin: names=rabbitmq_management_agent state=enabled new_only=yes
+  register: rabbitmq_management_agent
+
+- name: active the rabbitmq_management plugin
+  rabbitmq_plugin: names=rabbitmq_management state=enabled new_only=yes
+  register: rabbitmq_management
+
+- name: active the rabbitmq_shovel_management plugin
+  rabbitmq_plugin: names=rabbitmq_shovel_management state=enabled new_only=yes
+  register: rabbitmq_shovel_management
+
+- name: active the rabbitmq_shovel plugin
+  rabbitmq_plugin: names=rabbitmq_shovel state=enabled new_only=yes
+  register: rabbitmq_shovel
+
+
+
+- name: restart RabbitMQ to be able to setup federation
+  service: name=rabbitmq-server state=restarted
+  when: federation_plugin.changed
+
+- name: set the federation-upstream parameter
+  rabbitmq_parameter:
+    component=federation-upstream
+    name="{{ item.name }}"
+    vhost="{{ item.vhost | default('/', false) }}"
+    value='{{ item.value }}'
+  with_items: rabbitmq_federation_configuration
+
+- name: set the policy for the federation
+  rabbitmq_policy:
+    name={{ item.name }}
+    vhost={{ item.vhost | default('/', false) }}
+    pattern="{{ item.pattern }}"
+    tags="{{ item.tags }}"
+  with_items: rabbitmq_policy_configuration
+
+- name: set the local username for the federation
+  rabbitmq_parameter:
+    component=federation
+    name=local-username
+    value='"{{ item.local_username | default( 'guest', false ) }}"'
+    vhost={{ item.vhost | default( '/', false) }}
+    state=present
+  with_items: rabbitmq_federation_configuration

@@ -14,6 +14,9 @@ rabbitmq_users_definitions: []
 # Avoid setting up federation
 rabbitmq_federation: false
 
+# Avoid setting up clustering
+rabbitmq_clustering: false
+
 # defaults file for rabbitmq
 rabbitmq_cacert     : "cacert"
 rabbitmq_server_key : "server_key"
@@ -35,3 +38,7 @@ rabbitmq_conf_ssl_options_cacertfile          : "/etc/rabbitmq/ssl/cacert.pem"
 rabbitmq_conf_ssl_options_certfile            : "/etc/rabbitmq/ssl/server_cert.pem"
 rabbitmq_conf_ssl_options_keyfile             : "/etc/rabbitmq/ssl/server_key.pem"
 rabbitmq_conf_ssl_options_fail_if_no_peer_cert: "true"
+
+
+rabbitmq_bin_path: "/usr/lib/rabbitmq/bin/"
+rabbitmq_prefix: "/usr/lib/rabbitmq/"

@@ -1,0 +1,63 @@
+---
+
+- name: gather clustering_first_boot_done flag
+  shell: cat /etc/clustering_first_boot_done || echo 0
+  register: clustering_first_boot_done
+
+- name: stop rabbitmq on debian before updating cookie
+  service: name=rabbitmq-server
+    state=stopped
+  when: clustering_first_boot_done.stdout == '0' and ansible_os_family == 'Debian'
+
+- name: make sure the nodes in the cluster have the correct cookie set
+  copy: dest={{ item }}
+    content="{{ rabbitmq_cluster_cookie }}"
+  with_items:
+    - /var/lib/rabbitmq/.erlang.cookie
+  register: cookie
+
+- name: set permissions on cookie
+  file: path={{ item }}
+    state=file
+    mode=0600
+    owner=rabbitmq
+    group=rabbitmq
+  with_items:
+    - /var/lib/rabbitmq/.erlang.cookie
+
+- name: restart rabbitmq after changing cookie
+  service: name=rabbitmq-server
+    state=restarted
+  when: cookie.changed
+
+- name: grab list of members in rabbit_cluster
+  command:  rabbitmqctl cluster_status -q
+  register: rabbitmqctl_cluster_status
+
+- name: stop rabbit if we happen not to be part of any cluster
+  command: rabbitmqctl stop_app
+  when: groups.rabbitmq_servers[0] not in rabbitmqctl_cluster_status.stdout
+
+- name: we need to wait for the first box to be provisioned
+  wait_for:
+    timeout=300
+    host={{ groups.rabbitmq_servers[0]}} port=4369
+
+- name: join this node with first member in hostgroup
+  command: rabbitmqctl join_cluster rabbit@{{ groups.rabbitmq_servers[0] }}
+  when: groups.rabbitmq_servers[0] not in rabbitmqctl_cluster_status.stdout
+
+- name: start rabbit after reforming the cluster
+  command: rabbitmqctl start_app
+  when: groups.rabbitmq_servers[0] not in rabbitmqctl_cluster_status.stdout
+
+- name: check status of nodes in cluster
+  command:  rabbitmqctl cluster_status -q
+  register: rabbitmqctl_cluster_status
+
+- assert: { that: "groups.rabbitmq_servers[0] in rabbitmqctl_cluster_status.stdout" }
+
+- name: set clustering_first_boot_done
+  shell: "echo 1 > clustering_first_boot_done "
+  when: ansible_os_family == 'Debian'
+

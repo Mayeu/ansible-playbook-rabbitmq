@@ -1,0 +1,17 @@
+---
+
+## Enable EPEL repo
+- name: bootstrap epel-release install
+  copy: src=epel.repo
+        dest=/etc/yum.repos.d/
+        owner=root group=root mode=0644
+
+- name: copy GPG keys
+  copy: dest=/etc/pki/rpm-gpg/
+    src=RPM-GPG-KEY-EPEL-6
+
+- name: epel repository enable
+  ini_file: dest=/etc/yum.repos.d/epel.repo
+            section=epel
+            option=disabled
+            value=1
