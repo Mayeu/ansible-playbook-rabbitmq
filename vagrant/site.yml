@@ -1,6 +1,9 @@
 ---
-- hosts: all
+- hosts: rabbitmq_servers
   sudo: true
+  serial: 1
+  # we need to serialize the play, when setting up clustering
   roles:
-    - { role: yum-repo-epel, when: ansible_distribution == 'CentOS' }
+    - { role: yum-repo-epel, when: ansible_os_family == 'RedHat' }
     - rabbitmq
+
