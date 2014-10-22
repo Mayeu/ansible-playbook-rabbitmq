@@ -8,7 +8,7 @@ an issue.
 
 ## Supported system
 
-Currently only Debian Jessie and Wheezy on amd64 is supported. Patch welcome to
+Currently only Debian Jessie, Wheezy, and EL6 on amd64 is supported. Patch welcome to
 support other OS.
 
 ### Role Variables
@@ -93,6 +93,17 @@ rabbitmq_policy_configuration:
     tags: description of the policy in dict form # exemple: "ha-mode=all"
 ```
 
+Defining the policy configuration:
+
+The first box in the ansible hostgroup is the 'master' rabbit box, all other nodes
+will join that cluster when provisioned.
+
+```yaml
+rabbitmq_clustering: true,
+rabbitmq_cluster_nodes: ['rabbitbox1','rabbitbox2'],
+rabbitmq_cluster_cookie: 'KJSdK239sjdfkj32jacnwl7v32k',
+```
+
 ## Files required
 
 You have to put the needed certificates in your `files/` folder:
@@ -101,6 +112,8 @@ You have to put the needed certificates in your `files/` folder:
      |- rabbitmq_{{ rabbitmq_cacert }}.pem
      |- rabbitmq_{{ rabbitmq_server_key }}.pem
      |- rabbitmq_{{ rabbitmq_server_cert }}.pem
+
+
 
 ## License
 
