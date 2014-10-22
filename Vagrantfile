@@ -3,10 +3,10 @@
 # list your boxes and ips here
 boxes = [
   {
-    :name => :rabbitbox1,
+    :name => :rabbit1,
     :ip => "192.168.98.2"},
   {
-    :name => :rabbitbox2,
+    :name => :rabbit2,
     :ip => "192.168.98.3"}]
 
 
@@ -27,8 +27,8 @@ Vagrant.configure('2') do |config|
         machine.vm.box = 'centos65'
         machine.vm.box_url = 'https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box'
       else
-        machine.vm.box = 'jessie'
-        machine.vm.box_url = 'https://downloads.sourceforge.net/project/vagrantboxjessie/debian80.box'
+        machine.vm.box = 'wheezy'
+        machine.vm.box_url = 'https://github.com/jose-lpa/packer-debian_7.6.0/releases/download/1.0/packer_virtualbox-iso_virtualbox.box'
       end
 
       machine.vm.hostname = opts[:name]
@@ -58,13 +58,13 @@ Vagrant.configure('2') do |config|
     ansible.host_key_checking = false
     ansible.verbose = "vvv"
     ansible.groups = {
-      "rabbitmq_servers" => ["rabbitbox1", "rabbitbox2"] }
+      "rabbitmq_servers" => ["rabbit1", "rabbit2"] }
     ansible.extra_vars = {
       rabbitmq_vhost_definitions: ['vhost1'],
       rabbitmq_ssl: false,
       rabbitmq_clustering: true,
       rabbitmq_federation: false,
-      rabbitmq_cluster_nodes: ['rabbitbox1','rabbitbox2'],
+      rabbitmq_cluster_nodes: ['rabbit1','rabbit2'],
       rabbitmq_cluster_cookie: 'KJSdK239sjdfkj32jacnwl7v32k',
       rabbitmq_plugins: [
         'rabbitmq_management_agent',

@@ -1,5 +1,14 @@
 ---
 
+- name: gather clustering_first_boot_done flag
+  shell: cat /etc/clustering_first_boot_done || echo 0
+  register: clustering_first_boot_done
+
+- name: stop rabbitmq on debian before updating cookie
+  service: name=rabbitmq-server
+    state=stopped
+  when: clustering_first_boot_done.stdout == '0' and ansible_os_family == 'Debian'
+
 - name: make sure the nodes in the cluster have the correct cookie set
   copy: dest={{ item }}
     content="{{ rabbitmq_cluster_cookie }}"
@@ -47,4 +56,8 @@
   register: rabbitmqctl_cluster_status
 
 - assert: { that: "groups.rabbitmq_servers[0] in rabbitmqctl_cluster_status.stdout" }
+
+- name: set clustering_first_boot_done
+  shell: "echo 1 > clustering_first_boot_done "
+  when: ansible_os_family == 'Debian'
 
