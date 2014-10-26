@@ -3,6 +3,7 @@
   roles:
     - role: rabbitmq
       rabbitmq_ssl: false
+      rabbitmq_conf_tcp_listeners_address: '0.0.0.0'
       rabbitmq_vhost_definitions:
         - sensu
       rabbitmq_users_definitions:
