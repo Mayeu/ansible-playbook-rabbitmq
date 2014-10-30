@@ -36,9 +36,9 @@ Any new feature added (from `X.Y.Z` to `X.(Y+1).Z`) should have a working
 default value that need no user interaction by default. If a feature addition
 require user interaction, then it is not a minor upgrade, but a major one.
 
-### Role Variables
+## Role Variables
 
-#### Environment
+### Environment
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
@@ -57,7 +57,7 @@ Will generate:
 RABBITMQ_ROCKS="correct"
 ```
 
-#### Certificate
+### Certificate
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
@@ -66,7 +66,7 @@ RABBITMQ_ROCKS="correct"
 `rabbitmq_server_cert`|String|Name of the SSL certificate file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`server_cert`
 `rabbitmq_ssl`|Boolean|Define if we need to use SSL|`true`
 
-#### Default configuration file
+### Default configuration file
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
@@ -79,14 +79,14 @@ RABBITMQ_ROCKS="correct"
 `rabbitmq_conf_ssl_options_keyfile`|String|Path to the private key file|`"/etc/rabbitmq/ssl/server_key.pem"`
 `rabbitmq_conf_ssl_options_fail_if_no_peer_cert`|Boolean|Value of the `fail_if_no_peer_cert` SSL option|`"true"`
 
-#### Plugins
+### Plugins
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
 `rabbitmq_new_only`|String|Add plugins as new, without deactivating other plugins|`'no'`
 `rabbitmq_plugins`|String|List|List of plugins to activate|`[]`
 
-#### Vhost
+### Vhost
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
@@ -118,7 +118,7 @@ rabbitmq_users_definitions:
     - administrator
 ```
 
-#### Federation
+### Federation
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
