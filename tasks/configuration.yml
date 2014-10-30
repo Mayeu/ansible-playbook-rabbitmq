@@ -1,0 +1,44 @@
+---
+- name: create the ssl folder for rabbitmq
+  file:
+    path=/etc/rabbitmq/ssl/
+    owner=rabbitmq
+    group=rabbitmq
+    mode=0750
+    state=directory
+  when: rabbitmq_ssl
+
+- name: copy the ssl certificates
+  copy:
+    src="files/rabbitmq_{{ item }}.pem"
+    dest="/etc/rabbitmq/ssl/{{ item }}.pem"
+    owner=rabbitmq
+    group=rabbitmq
+    mode=0640
+    backup=yes
+  with_items:
+    - "{{ rabbitmq_cacert }}"
+    - "{{ rabbitmq_server_key }}"
+    - "{{ rabbitmq_server_cert }}"
+  when: rabbitmq_ssl
+
+- name: generate the configuration of rabbitmq
+  template:
+    src=rabbitmq.config.j2
+    dest=/etc/rabbitmq/rabbitmq.config
+    owner=rabbitmq
+    group=rabbitmq
+    mode=0644
+    backup=yes
+  notify: restart rabbitmq-server
+
+- name: generate environment-specific configuration
+  template:
+    src=rabbitmq-env.conf.j2
+    dest=/etc/rabbitmq/rabbitmq-env.conf
+    owner=rabbitmq
+    group=rabbitmq
+    mode=0644
+    backup=yes
+  notify: restart rabbitmq-server
+  when: rabbitmq_conf_env is defined
