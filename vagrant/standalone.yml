@@ -5,10 +5,10 @@
       rabbitmq_ssl: false
       rabbitmq_conf_tcp_listeners_address: '0.0.0.0'
       rabbitmq_vhost_definitions:
-        - sensu
+        - name: sensu
       rabbitmq_users_definitions:
-        - vhost   : sensu
-          user    : sensu
+        - name: sensu
+          user: sensu
           password: placeholder
       rabbitmq_federation: true
       rabbitmq_federation_configuration:
@@ -21,4 +21,6 @@
           vhost: sensu
           tags: "federation-upstream-set=all"
   tasks:
+    # Flush outstanding handlers before tests.
+    - meta: flush_handlers
     - include: test_standalone.yml
