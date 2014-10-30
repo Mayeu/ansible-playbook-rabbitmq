@@ -6,7 +6,9 @@ Vagrant.configure('2') do |config|
     ansible.sudo = true
     ansible.host_key_checking = false
     ansible.extra_vars = {
-      rabbitmq_vhost_definitions: ['sensu'],
+      rabbitmq_vhost_definitions: [
+        { name: 'sensu' }
+      ],
       rabbitmq_ssl: false,
       rabbitmq_conf_tcp_listeners_address: '0.0.0.0',
       rabbitmq_users_definitions: [
@@ -31,7 +33,10 @@ Vagrant.configure('2') do |config|
           vhost: 'sensu',
           tags: 'federation-upstream-set=all'
         }
-      ]
+      ],
+      rabbitmq_conf_env: {
+        RABBITMQ_ROCKS: 'correct'
+      }
     }
   end
 

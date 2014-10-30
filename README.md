@@ -13,7 +13,27 @@ support other OS.
 
 ### Role Variables
 
+### Environment
+
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
+`rabbitmq_conf_env`|List|Environment variable to set and they value|undef|
+
+Exemple:
+
+```yaml
+rabbitmq_conf_env:
+  RABBITMQ_ROCKS: correct
+```
+
+Will generate:
+
+```
+RABBITMQ_ROCKS="correct"
+```
+
 #### Certificate
+
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
 `rabbitmq_cacert`|String|Name of the CA certificate file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`cacert`
@@ -48,20 +68,31 @@ support other OS.
 `rabbitmq_vhost_definitions`|List|Define the list of vhost to create|`[]`
 `rabbitmq_users_definitions`|List of hash|Define the users, and associated vhost and password (see below)|`[]`
 
+Defining the vhosts configuration
+
+```yaml
+rabbitmq_vhost_definitions:
+  - name:    vhost1
+    node:    node_name #Optionnal, default to "rabbit"
+    tracing: yes       #Optionnal, default to "no"
+```
+
 Defining the users configuration:
 
 ```yaml
 rabbitmq_users_definitions:
-  - vhost   : vhost1
-    user    : user1
+  - vhost:    vhost1
+    user:     user1
     password: password1
-  - vhost   : vhost1
-    user    : user2
+    node:     node_name  # Optionnal, default to "rabbit"
+  - vhost:    vhost1
+    user:     user2
     password: password2
-    force   : no
-    tags:
+    force:    no
+    tags:                # Optionnal, user tags
     - administrator
 ```
+
 #### Federation
 
 |Name|Type|Description|Default|

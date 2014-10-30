@@ -47,6 +47,17 @@
     backup=yes
   notify: restart rabbitmq-server
 
+- name: generate environment-specific configuration
+  template:
+    src=rabbitmq-env.conf.j2
+    dest=/etc/rabbitmq/rabbitmq-env.conf
+    owner=rabbitmq
+    group=rabbitmq
+    mode=0644
+    backup=yes
+  notify: restart rabbitmq-server
+  when: rabbitmq_conf_env is defined
+
 - name: enable plugins
   rabbitmq_plugin: names={{ rabbitmq_plugins | join(',') }} state=enabled new_only={{ rabbitmq_new_only }}
   notify: restart rabbitmq-server
