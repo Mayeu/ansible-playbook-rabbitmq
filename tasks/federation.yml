@@ -17,17 +17,23 @@
 
 - name: set the policy for the federation
   rabbitmq_policy:
-    name={{ item.name }}
-    vhost={{ item.vhost | default('/', false) }}
+    name="{{ item.name }}"
+    vhost="{{ item.vhost | default('/', false) }}"
     pattern="{{ item.pattern }}"
     tags="{{ item.tags }}"
   with_items: rabbitmq_policy_configuration
 
+- name: get the version of rabbitmq
+  shell: dpkg-query -W rabbitmq-server | awk '{print $NF}'
+  register: rabbitmq_version
+
+# local-username is no longer required with 3.3.0
+# http://www.rabbitmq.com/release-notes/README-3.3.0.txt
 - name: set the local username for the federation
   rabbitmq_parameter:
     component=federation
     name=local-username
     value='"{{ item.local_username | default( 'guest', false ) }}"'
-    vhost={{ item.vhost | default( '/', false) }}
-    state=present
+    vhost="{{ item.vhost | default( '/', false) }}"
   with_items: rabbitmq_federation_configuration
+  when: rabbitmq_version.stdout | version_compare('3.3.0', '<')
