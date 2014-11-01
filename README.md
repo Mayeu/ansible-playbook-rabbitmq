@@ -22,10 +22,11 @@ to support other distribution or OS.
 
 ## Semantic versioning 2.0.0
 
-Starting with the commit 67c608826a140868a71854ce3129b5f3d67ddcce, this
-playbook use semantic versioning. Following the specification, and since the
-playbook is used in production and I want to avoid breaking the compatibility,
-the first version number is 1.0.0
+Starting with the commit
+[67c608826a140868a71854ce3129b5f3d67ddcce](https://github.com/Mayeu/ansible-playbook-rabbitmq/commit/67c608826a140868a71854ce3129b5f3d67ddcce),
+this playbook use semantic versioning. Following the specification, and since
+the playbook is used in production and I want to avoid breaking the
+compatibility, the first version number is 1.0.0
 
 The public API defined in the semantic versioning correspond to the settings
 available to the user. Breaking the API (incrementing from `X.Y.Z` to
