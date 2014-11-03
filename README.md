@@ -69,9 +69,9 @@ RABBITMQ_ROCKS="correct"
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
-`rabbitmq_cacert`|String|Name of the CA certificate file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`cacert`
-`rabbitmq_server_key`|String|Name of the SSL key file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`server_key`
-`rabbitmq_server_cert`|String|Name of the SSL certificate file. Will be prefixed by `rabbitmq_` and postfixed by `.pem`|`server_cert`
+`rabbitmq_cacert`|String|Path of the CA certificate file.|`files/rabbitmq_cacert.pem`
+`rabbitmq_server_key`|String|Path of the SSL key file.|`files/rabbitmq_server_key.pem`
+`rabbitmq_server_cert`|String|Path of the SSL certificate file.|`files/rabbitmq_server_cert.pem`
 `rabbitmq_ssl`|Boolean|Define if we need to use SSL|`true`
 
 ### Default configuration file
@@ -159,12 +159,20 @@ rabbitmq_policy_configuration:
 
 ## Files required
 
-You have to put the needed certificates in your `files/` folder:
+You have to put the needed certificates in your `files/` folder, for example:
 
     files/
-     |- rabbitmq_{{ rabbitmq_cacert }}.pem
-     |- rabbitmq_{{ rabbitmq_server_key }}.pem
-     |- rabbitmq_{{ rabbitmq_server_cert }}.pem
+     |- cacert.crt
+     |- myserver_key.key
+     |- myserver_cert.crt
+
+And then configure the role:
+
+```yaml
+    rabbitmq_cacert: files/cacert.crt
+    rabbitmq_server_key: files/myserver_key.key
+    rabbitmq_server_cert: files/myserver_cert.crt
+```
 
 ## Testing
 
