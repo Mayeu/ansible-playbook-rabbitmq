@@ -166,6 +166,16 @@ You have to put the needed certificates in your `files/` folder:
      |- rabbitmq_{{ rabbitmq_server_key }}.pem
      |- rabbitmq_{{ rabbitmq_server_cert }}.pem
 
+## Testing
+
+There is some tests that try to provision a VM using Vagrant. Just launch them
+with:
+
+    $ vagrant up
+
+You can change the VM used during test by setting the `VAGRANT_BOX_NAME` env
+variable to something else than `deb/jessie`.
+
 ## License
 
 BSD
