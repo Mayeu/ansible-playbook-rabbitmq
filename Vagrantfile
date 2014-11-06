@@ -1,5 +1,7 @@
+BOX_NAME = ENV['VAGRANT_BOX_NAME'] || 'deb/jessie'
+
 Vagrant.configure('2') do |config|
-  config.vm.box = 'deb/jessie'
+  config.vm.box = BOX_NAME
   config.vm.provision 'ansible' do |ansible|
     ansible.playbook = 'vagrant/site.yml'
     ansible.limit = 'all'
