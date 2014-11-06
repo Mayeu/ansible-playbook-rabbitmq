@@ -39,6 +39,13 @@ require user interaction, then it is not a minor upgrade, but a major one.
 
 ## Role Variables
 
+### Installation
+
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
+`rabbitmq_os_package`|Bool|When true uses the default package proposed by the OS or distribution instead of the one distributed by RabbitMQ.|`false`|
+
+
 ### Environment
 
 |Name|Type|Description|Default|

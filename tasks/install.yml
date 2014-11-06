@@ -1,20 +1,4 @@
 ---
-- name: "add the official rabbitmq repository's key"
-  apt_key: url=https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
-
-- name: add the official rabbitmq repository
-  copy:
-    src=rabbitmq.list
-    dest=/etc/apt/sources.list.d/
-    backup=yes
-  register: aptrepo
-
-- name: refresh apt cache
-  apt: update_cache=yes
-  when: aptrepo.changed
-
-- name: install rabbitmq-server
-  apt: name=rabbitmq-server
-
-- name: enable rabbitmq-server to survive reboot
-  service: name=rabbitmq-server enabled=yes
+# Debian install
+- include: install/debian.yml
+  when: ansible_os_family == 'Debian'

@@ -3,6 +3,9 @@
 # Playbook control
 # ################
 
+# Take the package given by the OS/distrib
+rabbitmq_os_package: false
+
 # Plugins
 rabbitmq_plugins: []
 rabbitmq_new_only: 'no'
