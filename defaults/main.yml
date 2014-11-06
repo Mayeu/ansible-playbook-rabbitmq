@@ -18,9 +18,9 @@ rabbitmq_users_definitions: []
 rabbitmq_federation: false
 
 # defaults file for rabbitmq
-rabbitmq_cacert     : "files/rabbitmq_cacert.pem"
-rabbitmq_server_key : "files/rabbitmq_server_key.pem"
-rabbitmq_server_cert: "files/rabbitmq_server_cert.pem"
+rabbitmq_cacert     : "rabbitmq_cacert.pem"
+rabbitmq_server_key : "rabbitmq_server_key.pem"
+rabbitmq_server_cert: "rabbitmq_server_cert.pem"
 rabbitmq_ssl        : true
 
 # ######################
