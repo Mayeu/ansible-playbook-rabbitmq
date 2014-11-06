@@ -13,7 +13,7 @@
 - name: add rabbitmq user and set priveleges
   rabbitmq_user:
     user={{ item.user }}
-    password="{{ item.password }}"
+    password={{ item.password }}
     vhost={{ item.name | default('/', false) }}
     node={{ item.node | default('rabbit') }}
     tags={{ (item.tags | default('')) | join(',') }}
@@ -21,14 +21,14 @@
     read_priv=.*
     write_priv=.*
     state=present
-    force="{{ item.force|default('yes') }}"
+    force={{ item.force|default('yes') }}
   with_items: rabbitmq_users_definitions
 
 - name: remove guest user (hostname)
   rabbitmq_user:
     user=guest
     vhost=/
-    node=rabbit@{{ ansible_hostname }}
+    node="rabbit@{{ ansible_hostname }}"
     state=absent
   register: rm_guest_hostname
   ignore_errors: true
