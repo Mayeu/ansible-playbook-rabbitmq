@@ -5,3 +5,5 @@
 - include: vhost.yml
 - include: federation.yml
   when: rabbitmq_federation
+- include: cluster.yml
+  when: rabbitmq_cluster

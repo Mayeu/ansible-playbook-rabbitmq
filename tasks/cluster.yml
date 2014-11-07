@@ -1,0 +1,41 @@
+---
+- name: add rabbitmq erlang cookie
+  copy:
+    dest=/var/lib/rabbitmq/.erlang.cookie
+    content={{ rabbitmq_cluster_cookie }}
+    owner={{ rabbitmq_user }}
+    group={{ rabbitmq_group }}
+    mode=0400
+  register: erlang_cookie
+
+## When rabbitmq starts it creates  '/var/lib/rabbitmq/mnesia'. This dir
+## should be deleted before clustering is setup because it retains data that
+## can conflict with the clustering information.
+- name: remove mnesia configuration
+  file: path=/var/lib/rabbitmq/mnesia state=absent
+  when: erlang_cookie.changed or cluster_configuration.changed
+
+- name: stop rabbit cluster
+  service: name=rabbitmq-server state=stopped
+  when: erlang_cookie.changed or cluster_configuration.changed
+
+# In case there are lingering processes, ignore errors silently
+- name: send sigterm to any running rabbitmq processes
+  shell: killall -u rabbitmq || true
+  when: erlang_cookie.changed or cluster_configuration.changed
+
+- name: start rabbitmq
+  service: name=rabbitmq-server state=started
+
+- name: wait for rabbit to start
+  wait_for:
+    port={{ rabbitmq_port }}
+    host={{ rabbitmq_bind_address }}
+    delay=2
+
+- name: set the HA mirror queues policy
+  rabbitmq_policy:
+     name=HA
+     node={{ rabbitmq_nodename }}
+     pattern='.*'
+     tags=ha-mode=all

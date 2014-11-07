@@ -1,0 +1,16 @@
+---
+- hosts: rabbit-cluster
+  serial: 1
+  roles:
+    - role: rabbitmq
+      rabbitmq_ssl: false
+      rabbitmq_cluster: true
+      rabbitmq_cluster_cookie: 'KJSdK239sjdfkj32jacnwl7v32k'
+      rabbitmq_conf_env:
+        nodename: "rabbit@{{ ansible_hostname }}"
+        node_ip_address: "{{ rabbitmq_bind_address }}"
+
+  tasks:
+    # Flush outstanding handlers before tests.
+    - meta: flush_handlers
+    - include: test_cluster.yml

@@ -1,2 +1,3 @@
 ---
 - include: standalone.yml
+- include: cluster.yml

@@ -1,5 +1,5 @@
 ---
-- name: ensure rabbitmq is runned
+- name: ensure rabbitmq is running
   service: name=rabbitmq-server state=started
 
 - name: add rabbitmq vhost
@@ -28,7 +28,7 @@
   rabbitmq_user:
     user=guest
     vhost=/
-    node="rabbit@{{ ansible_hostname }}"
+    node={{ rabbitmq_nodename }}
     state=absent
   register: rm_guest_hostname
   ignore_errors: true

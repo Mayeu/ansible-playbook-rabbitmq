@@ -157,6 +157,27 @@ rabbitmq_policy_configuration:
     tags: description of the policy in dict form # exemple: "ha-mode=all"
 ```
 
+### Clustering
+
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
+`rabbitmq_cluster`|Boolean|Define if we want to enable clustering|`false`
+
+Defining a cluster:
+
+```yaml
+- hosts: rabbit-cluster*
+  serial: 1
+  roles:
+    - role: rabbitmq
+      rabbitmq_ssl: false
+      rabbitmq_cluster: true
+      rabbitmq_cluster_cookie: 'KJSdK239sjdfkj32jacnwl7v32k'
+      rabbitmq_conf_env:
+        nodename: "rabbit@{{ ansible_hostname }}"
+        node_ip_address: "{{ rabbitmq_bind_address }}"
+```
+
 ## Files required
 
 You have to put the needed certificates in your `files/` folder, for example:
