@@ -28,7 +28,7 @@
   with_items: rabbitmq_policy_configuration
 
 - name: get the version of rabbitmq
-  shell: dpkg-query -W rabbitmq-server | awk '{print $NF}'
+  shell: rabbitmqctl status | awk '{print $NF}'
   register: rabbitmq_version
 
 # local-username is no longer required with 3.3.0
