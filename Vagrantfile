@@ -1,3 +1,4 @@
+ENV['VAGRANT_BOX_NAME'] = 'chef/centos-6.5'
 BOX_NAME = ENV['VAGRANT_BOX_NAME'] || 'deb/jessie'
 
 Vagrant.configure('2') do |config|
