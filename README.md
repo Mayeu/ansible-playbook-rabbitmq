@@ -179,7 +179,8 @@ And then configure the role:
 There is some tests that try to provision a VM using Vagrant. Just launch them
 with:
 
-    $ vagrant up
+    $ vagrant up # for test with Debian jessie
+    $ export VAGRANT_BOX_NAME='chef/centos-6.5' vagrant up # for test with Centos
 
 You can change the VM used during test by setting the `VAGRANT_BOX_NAME` env
 variable to something else than `deb/jessie`.
