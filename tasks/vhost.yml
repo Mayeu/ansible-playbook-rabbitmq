@@ -14,7 +14,7 @@
   rabbitmq_user:
     user={{ item.user }}
     password={{ item.password }}
-    vhost={{ item.name | default('/', false) }}
+    vhost={{ item.vhost | default('/', false) }}
     node={{ item.node | default('rabbit') }}
     tags={{ (item.tags | default('')) | join(',') }}
     configure_priv=.*
