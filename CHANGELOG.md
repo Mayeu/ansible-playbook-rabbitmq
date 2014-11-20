@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.0
+
+* Bugfixes: item.vhost silently changed to item.name breaking the API
+  involuntary.
+* Add a simple Travis-CI support
+* Update the tasks directory layout to be more idiomatic
+* Add a test to ensure the default configuration listen to the good port
+
 ## 1.3.0
 
 * Add support for Redhat

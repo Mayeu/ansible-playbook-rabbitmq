@@ -10,7 +10,7 @@ an issue.
 
 Use Ansible galaxy to install this playbook:
 
-    $ ansible-galaxy install Mayeu.RabbitMQ,1.2.0
+    $ ansible-galaxy install Mayeu.RabbitMQ,1.4.0
 
 The `master` branch should currently be considered instable. Please avoid using
 it for something else than test purpose :)
