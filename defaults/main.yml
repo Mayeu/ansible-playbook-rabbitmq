@@ -39,4 +39,13 @@ rabbitmq_conf_ssl_options_certfile            : "/etc/rabbitmq/ssl/{{ rabbitmq_s
 rabbitmq_conf_ssl_options_keyfile             : "/etc/rabbitmq/ssl/{{ rabbitmq_server_key | basename }}"
 rabbitmq_conf_ssl_options_fail_if_no_peer_cert: "true"
 
-rabbitmq_env: false
+# rabbitmq server configuration
+rabbitmq_user: rabbitmq
+rabbitmq_group: rabbitmq
+rabbitmq_cluster_user: rabbit
+rabbitmq_port: "{{ rabbitmq_conf_ssl_listeners_port if rabbitmq_ssl else rabbitmq_conf_tcp_listeners_port }}"
+rabbitmq_cluster: false
+rabbitmq_nodename: "{{ rabbitmq_cluster_user }}@{{ ansible_hostname }}"
+rabbitmq_primary_interface: eth1
+rabbitmq_bind_address: "{{ hostvars[inventory_hostname]['ansible_' + rabbitmq_primary_interface]['ipv4']['address'] }}"
+rabbitmq_cluster_role: rabbit-cluster

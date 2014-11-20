@@ -1,12 +1,25 @@
+{% macro rabbitmq_hosts() -%}
+{% for host in groups[rabbitmq_cluster_role] -%}
+   {% if loop.last -%}
+'{{ rabbitmq_cluster_user }}@{{ hostvars[host]['ansible_hostname'] }}'
+   {%- else -%}
+'{{ rabbitmq_cluster_user }}@{{ hostvars[host]['ansible_hostname'] }}',
+   {%- endif -%}
+{% endfor -%}
+{% endmacro -%}
+
 [
   {rabbit, [
-    {% if rabbitmq_conf_tcp_listeners_address != '' %}
-    {tcp_listeners, [{"{{ rabbitmq_conf_tcp_listeners_address }}", {{ rabbitmq_conf_tcp_listeners_port }}}]}{% if rabbitmq_ssl %},{% endif %}
-    {% else %}
-    {tcp_listeners, []}{% if rabbitmq_ssl %},{% endif %}
-    {% endif %}
-    {% if rabbitmq_ssl %}
-    {ssl_listeners, [{"{{ rabbitmq_conf_ssl_listeners_address }}", {{ rabbitmq_conf_ssl_listeners_port }}}]},
+    {% if rabbitmq_cluster -%}
+    {cluster_nodes, {[{{ rabbitmq_hosts() }}], disc}},
+    {% endif -%}
+    {% if rabbitmq_conf_tcp_listeners_address != '' -%}
+    {tcp_listeners, [{"{{ rabbitmq_conf_tcp_listeners_address }}", {{ rabbitmq_port }}}]}{% if rabbitmq_ssl -%},{% endif -%}
+    {% else -%}
+    {tcp_listeners, []}{% if rabbitmq_ssl -%},{% endif -%}
+    {% endif -%}
+    {% if rabbitmq_ssl -%}
+    {ssl_listeners, [{"{{ rabbitmq_conf_ssl_listeners_address }}", {{ rabbitmq_port }}}]},
     {ssl_options, [
       {cacertfile, "{{rabbitmq_conf_ssl_options_cacertfile}}"},
       {certfile, "{{rabbitmq_conf_ssl_options_certfile}}"},
@@ -14,6 +27,6 @@
       {verify, verify_peer},
       {fail_if_no_peer_cert,{{rabbitmq_conf_ssl_options_fail_if_no_peer_cert}}}
       ]}
-    {% endif %}
+    {% endif -%}
   ]}
 ].

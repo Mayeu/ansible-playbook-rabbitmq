@@ -1,0 +1,7 @@
+---
+- shell: rabbitmqctl -q cluster_status | awk '/disc/,/\},/' | tr '\n' ' ' | grep -o rabbit@rabbit-cluster | wc -l
+  register: test_result
+- name: ensure cluster has 3 nodes
+  assert:
+    that:
+      - "{{ test_result.stdout }} == 3"
