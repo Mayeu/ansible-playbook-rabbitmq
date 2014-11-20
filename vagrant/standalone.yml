@@ -2,8 +2,6 @@
 - hosts: rabbit-standalone
   roles:
     - role: rabbitmq
-      rabbitmq_ssl: true
-      rabbitmq_conf_tcp_listeners_address: '0.0.0.0'
       rabbitmq_vhost_definitions:
         - name: sensu
       rabbitmq_users_definitions:
