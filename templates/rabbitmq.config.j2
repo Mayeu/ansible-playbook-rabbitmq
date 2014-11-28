@@ -3,7 +3,7 @@
     {% if rabbitmq_conf_tcp_listeners_address != '' %}
     {tcp_listeners, [{"{{ rabbitmq_conf_tcp_listeners_address }}", {{ rabbitmq_conf_tcp_listeners_port }}}]}{% if rabbitmq_ssl %},{% endif %}
     {% else %}
-    {tcp_listeners, []}{% if rabbitmq_ssl %},{% endif %}
+    {tcp_listeners, [{{rabbitmq_conf_tcp_listeners_port}}]}{% if rabbitmq_ssl %},{% endif %}
     {% endif %}
     {% if rabbitmq_ssl %}
     {ssl_listeners, [{"{{ rabbitmq_conf_ssl_listeners_address }}", {{ rabbitmq_conf_ssl_listeners_port }}}]},
