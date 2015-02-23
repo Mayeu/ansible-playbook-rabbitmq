@@ -5,6 +5,7 @@
 
 # Take the package given by the OS/distrib
 rabbitmq_os_package: false
+rabbitmq_download_rpm: true
 
 # Plugins
 rabbitmq_plugins: []
