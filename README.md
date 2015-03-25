@@ -106,8 +106,8 @@ Defining the vhosts configuration
 ```yaml
 rabbitmq_vhost_definitions:
   - name:    vhost1
-    node:    node_name #Optionnal, default to "rabbit"
-    tracing: yes       #Optionnal, default to "no"
+    node:    node_name #Optional, defaults to "rabbit"
+    tracing: yes       #Optional, defaults to "no"
 ```
 
 Defining the users configuration:
@@ -117,12 +117,15 @@ rabbitmq_users_definitions:
   - vhost:    vhost1
     user:     user1
     password: password1
-    node:     node_name  # Optionnal, default to "rabbit"
+    node:     node_name  # Optional, defaults to "rabbit"
+    configure_priv: "^resource.*" # Optional, defaults to ".*"
+    read_priv: "^$" # Disallow reading.
+    write_priv: "^$" # Disallow writing.
   - vhost:    vhost1
     user:     user2
     password: password2
     force:    no
-    tags:                # Optionnal, user tags
+    tags:                # Optional, user tags
     - administrator
 ```
 
