@@ -78,6 +78,7 @@ RABBITMQ_ROCKS="correct"
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
+`rabbitmq_config_template_file`|String|Path to RabbitMQ configuration file template. Can be absolute or relative|`rabbitmq.config.j2`|
 `rabbitmq_conf_tcp_listeners_address`|String|listening address for the tcp interface|`''`
 `rabbitmq_conf_tcp_listeners_port`|Integer|listening port for the tcp interface|`5672`
 `rabbitmq_conf_ssl_listeners_address`|String|listening address for the ssl interface|`'0.0.0.0'`
@@ -93,6 +94,8 @@ RABBITMQ_ROCKS="correct"
 |----|----|-----------|-------|
 `rabbitmq_new_only`|String|Add plugins as new, without deactivating other plugins|`'no'`
 `rabbitmq_plugins`|String|List|List of plugins to activate|`[]`
+
+Tip: If you require additional configuration of plugins in the RabbitMQ configuration file, use `rabbit_config_template_file` to override the default template used. It is possible to add a custom `rabbitmq.config.j2` file in a `templates/` dir relative to your playbook for example.
 
 ### Vhost
 
