@@ -10,6 +10,10 @@ This change log follow the convention proposed by [Kepp a CHANGELOG](http://keep
 
 - New option to configure permission for users
 
+### Changed
+
+- Travis now uses the last Ansible
+
 ## [1.4.0] - 2014-11-20
 
 ### Added
