@@ -16,7 +16,7 @@
     password={{ item.password }}
     vhost={{ item.vhost | default('/', false) }}
     node={{ item.node | default('rabbit') }}
-    tags={{ (item.tags | default('')) | join(',') }}
+    tags={{ (item.tags | default('')) }}
     configure_priv={{ item.configure_priv | default('.*') }}
     read_priv={{ item.read_priv | default('.*') }}
     write_priv={{ item.write_priv | default('.*') }}
