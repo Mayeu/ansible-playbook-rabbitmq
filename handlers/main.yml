@@ -2,3 +2,11 @@
 # handlers file for rabbitmq
 - name: restart rabbitmq-server
   service: name=rabbitmq-server state=restarted enabled=yes
+
+- name: stop rabbitmq-server
+  service: name=rabbitmq-server state=stopped
+  when: rabbitmq_uid or rabbitmq_gid
+
+- name: kill rabbitmq
+  command: pkill -u rabbitmq
+  when: rabbitmq_uid or rabbitmq_gid

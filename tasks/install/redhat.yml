@@ -12,6 +12,3 @@
 
 - name: install rabbitmq-server (RedHat)
   yum: name=http://www.rabbitmq.com/releases/rabbitmq-server/v3.3.5/rabbitmq-server-3.3.5-1.noarch.rpm state=present
-
-- name: enable rabbitmq-server to survive reboot
-  service: name=rabbitmq-server enabled=yes
