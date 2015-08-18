@@ -6,6 +6,16 @@
 # Take the package given by the OS/distrib
 rabbitmq_os_package: false
 
+# Install method ( choose : 'repo' or 'binary' )
+rabbitmq_install_method: repo
+
+# Install from binary options
+rabbitmq_binary_version: 3.5.4
+rabbitmq_binary_base_url: http://www.rabbitmq.com/releases/rabbitmq-server
+rabbitmq_binary_url: "{{ rabbitmq_binary_base_url }}/v{{ rabbitmq_binary_version }}"
+rabbitmq_binary_deb_filename: "rabbitmq-server_{{ rabbitmq_binary_version }}-1_all.deb"
+rabbitmq_binary_rpm_filename: "rabbitmq-server-{{ rabbitmq_binary_version }}-1.noarch.rpm"
+
 # Plugins
 rabbitmq_plugins: []
 rabbitmq_new_only: 'no'
