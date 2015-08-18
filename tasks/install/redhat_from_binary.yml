@@ -1,3 +1,5 @@
+---
+
 - name: install EPEL repository (RedHat)
   command: "{{ item }}"
   with_items:
@@ -10,8 +12,8 @@
     - erlang
     - libselinux-python
 
-- name: install rabbitmq-server (RedHat)
-  yum: name=http://www.rabbitmq.com/releases/rabbitmq-server/v3.3.5/rabbitmq-server-3.3.5-1.noarch.rpm state=present
+- name: install rabbitmq-server from URL (RedHat)
+  yum: name={{ rabbitmq_binary_url }}/{{ rabbitmq_binary_rpm_filename }} state=present
 
 - name: enable rabbitmq-server to survive reboot
   service: name=rabbitmq-server enabled=yes
