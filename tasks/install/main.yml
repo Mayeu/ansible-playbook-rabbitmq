@@ -1,7 +1,18 @@
 ---
-# Debian install
-- include: debian.yml
-  when: ansible_os_family == 'Debian'
+## Install from repos
+# Debian
+- include: debian_from_repo.yml
+  when: ansible_os_family == 'Debian' and rabbitmq_install_method == 'repo'
 
-- include: redhat.yml
-  when: ansible_os_family == 'RedHat'
+# Redhat
+- include: redhat_from_repo.yml
+  when: ansible_os_family == 'RedHat' and rabbitmq_install_method == 'repo'
+
+## Install from binary
+# Debian
+- include: debian_from_binary.yml
+  when: ansible_os_family == 'Debian' and rabbitmq_install_method == 'binary'
+
+# Redhat
+- include: redhat_from_binary.yml
+  when: ansible_os_family == 'RedHat' and rabbitmq_install_method == 'binary'

@@ -1,3 +1,5 @@
+---
+
 - name: install EPEL repository (RedHat)
   command: "{{ item }}"
   with_items:

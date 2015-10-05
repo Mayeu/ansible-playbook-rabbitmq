@@ -1,0 +1,16 @@
+---
+
+- name: create ansible cache directory
+  file: state=directory path=/var/cache/ansible
+
+# Download RabbitMQ from URL
+- name: "download rabbitMQ from URL"
+  get_url:
+    url={{ rabbitmq_binary_url }}/{{ rabbitmq_binary_deb_filename }}
+    dest=/var/cache/ansible
+
+- name: install rabbitmq-server
+  apt: deb=/var/cache/ansible/{{ rabbitmq_binary_deb_filename }}
+
+- name: enable rabbitmq-server to survive reboot
+  service: name=rabbitmq-server enabled=yes
