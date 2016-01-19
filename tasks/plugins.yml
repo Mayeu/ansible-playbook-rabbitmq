@@ -1,8 +1,8 @@
 ---
 - name: enable plugins
   rabbitmq_plugin:
-    names={{ rabbitmq_plugins | join(',') }}
-    new_only={{ rabbitmq_new_only }}
+    names: "{{ rabbitmq_plugins | join(',') }}"
+    new_only: "{{ rabbitmq_new_only }}"
   notify: restart rabbitmq-server
   when: rabbitmq_plugins != []
 
@@ -13,8 +13,8 @@
 
 - name: disable plugins if none added in the configuration
   rabbitmq_plugin:
-    name={{ item }}
-    state=disabled
+    name: "{{ item }}"
+    state: disabled
   notify: restart rabbitmq-server
   with_items: result.stdout_lines
   when: rabbitmq_plugins == []
