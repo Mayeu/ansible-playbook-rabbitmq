@@ -7,8 +7,8 @@
 
 - name: add the official rabbitmq repository
   copy:
-    src=../../files/rabbitmq.list
-    dest=/etc/apt/sources.list.d/
+    content="deb http://www.rabbitmq.com/debian/ testing main"
+    dest=/etc/apt/sources.list.d/rabbitmq.list
     backup=yes
   register: aptrepo
   when: not rabbitmq_os_package
