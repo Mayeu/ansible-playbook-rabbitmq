@@ -1,3 +1,16 @@
+# Announce
+
+Long time no update. I'm back on this playbook again, I'll be merging fixes (url,
+key checking,...) in master and releasing a working tagged version.
+
+Then I'll focus on creating a next branche that will be the version 2.0 of this
+playbook. The main things I plan to do with the version 2 is going to separate
+the installation steps from the pure configuration. I don't want to support a
+gazillion OS in one playbook. Thus, you'll be able to make a
+ansible-playbook-rabbitmq-install-my-little-snowflak-os yourself :)
+
+Thank you all for all the participation!
+
 # Rabbitmq Playbook
 
 Playbook to install and configure rabbitmq. Will come with various
