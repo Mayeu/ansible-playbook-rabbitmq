@@ -14,6 +14,11 @@ This change log follow the convention proposed by [Kepp a CHANGELOG](http://keep
 
 - Travis now uses the last Ansible
 
+### Fixed
+
+- URL of the signing key for Debian updated
+- Fixed the JSON generation for rabbitmq_parameter. It seems that [#237](https://github.com/ansible/ansible-modules-extras/commit/e8391d69855b42d8108fd921f7d6375714494a0e) did not fix it after all...
+
 ## [1.4.0] - 2014-11-20
 
 ### Added
