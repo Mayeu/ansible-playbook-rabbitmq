@@ -1,4 +1,9 @@
 ---
+- name: download list of plugins
+  get_url: url={{item}} dest=/usr/lib/rabbitmq/lib/rabbitmq_server-{{rabbitmq_version}}/plugins
+  with_items: rabbitmq_plugins_to_download
+  when: rabbitmq_plugins_to_download != []
+
 - name: enable plugins
   rabbitmq_plugin:
     names={{ rabbitmq_plugins | join(',') }}
