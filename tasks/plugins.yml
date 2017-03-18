@@ -16,5 +16,5 @@
     name={{ item }}
     state=disabled
   notify: restart rabbitmq-server
-  with_items: result.stdout_lines
+  with_items: "{{ result.get('stdout_lines', []) }}"
   when: rabbitmq_plugins == []
