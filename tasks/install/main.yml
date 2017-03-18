@@ -5,3 +5,23 @@
 
 - include: redhat.yml
   when: ansible_os_family == 'RedHat'
+
+# Reset rights
+- name: set rabbitmq gid
+  group: name=rabbitmq gid={{ rabbitmq_gid }} state=present
+  when: rabbitmq_gid is defined
+
+- name: set rabbitmq uid
+  user: name=rabbitmq uid={{ rabbitmq_uid }} group=rabbitmq state=present
+  when: rabbitmq_uid
+
+- name: reset rabbitmq folder and subfolders with new uid
+  file: path={{ item }} owner=rabbitmq group=rabbitmq follow=yes recurse=yes state=directory
+  with_items:
+    - "{{ rabbitmq_datadir }}"
+    - /var/log/rabbitmq
+  when: rabbitmq_uid
+
+- name: enable rabbitmq-server to survive reboot
+  service: name=rabbitmq-server enabled=yes
+  changed_when: false
