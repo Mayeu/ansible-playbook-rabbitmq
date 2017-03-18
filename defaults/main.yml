@@ -5,8 +5,11 @@
 
 # Take the package given by the OS/distrib
 rabbitmq_os_package: false
+rabbitmq_download_rpm: true
+rabbitmq_version: 3.3.5
 
 # Plugins
+rabbitmq_plugins_to_download: [] # you need to specify urls of plugins that you need to download
 rabbitmq_plugins: []
 rabbitmq_new_only: 'no'
 

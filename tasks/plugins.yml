@@ -1,15 +1,26 @@
 ---
+- name: download list of plugins
+  get_url: url={{item}} dest=/usr/lib/rabbitmq/lib/rabbitmq_server-{{rabbitmq_version}}/plugins
+  with_items: rabbitmq_plugins_to_download
+  when: rabbitmq_plugins_to_download != []
+  tags:
+    - rabbitmq_plugins
+
 - name: enable plugins
   rabbitmq_plugin:
     names={{ rabbitmq_plugins | join(',') }}
     new_only={{ rabbitmq_new_only }}
   notify: restart rabbitmq-server
   when: rabbitmq_plugins != []
+  tags:
+    - rabbitmq_plugins
 
 - name: get the list of active plugins to disable
   command: rabbitmq-plugins list -e -m
   register: result
   when: rabbitmq_plugins == []
+  tags:
+    - rabbitmq_plugins
 
 - name: disable plugins if none added in the configuration
   rabbitmq_plugin:
@@ -18,3 +29,5 @@
   notify: restart rabbitmq-server
   with_items: result.stdout_lines
   when: rabbitmq_plugins == []
+  tags:
+    - rabbitmq_plugins
