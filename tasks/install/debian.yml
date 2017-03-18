@@ -1,4 +1,13 @@
 ---
+#Installing Erlang from official repo
+- name: Downloading Erlang's repo
+  get_url: url=http://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb dest=/tmp/erlang-solutions_1.0_all.deb
+
+- name: Installing Erlang's repo
+  apt: deb=/tmp/erlang-solutions_1.0_all.deb
+
+- name: Installing Erlang from official repo
+  apt: name=erlang update_cache=yes
 
 # RabbitMQ official install
 - name: "add the official rabbitmq repository's key"
