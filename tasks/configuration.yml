@@ -27,7 +27,7 @@
 
 - name: generate the configuration of rabbitmq
   template:
-    src=rabbitmq.config.j2
+    src={{ rabbitmq_config_template_file }}
     dest=/etc/rabbitmq/rabbitmq.config
     owner=rabbitmq
     group=rabbitmq

@@ -27,6 +27,9 @@ rabbitmq_ssl        : true
 # RabbitMQ Configuration
 # ######################
 
+# rabbitmq config template file path
+rabbitmq_config_template_file: "rabbitmq.config.j2"
+
 # rabbitmq TCP configuration
 rabbitmq_conf_tcp_listeners_address: ''
 rabbitmq_conf_tcp_listeners_port: 5672
