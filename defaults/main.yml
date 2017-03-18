@@ -40,3 +40,10 @@ rabbitmq_conf_ssl_options_keyfile             : "/etc/rabbitmq/ssl/{{ rabbitmq_s
 rabbitmq_conf_ssl_options_fail_if_no_peer_cert: "true"
 
 rabbitmq_env: false
+
+# ########
+# RedHat Packages
+# ########
+
+epel_package_rpm: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+rabbitmq_server_package_rpm: "https://www.rabbitmq.com/releases/rabbitmq-server/v3.5.7/rabbitmq-server-3.5.7-1.noarch.rpm"
