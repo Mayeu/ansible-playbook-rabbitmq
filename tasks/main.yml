@@ -1,7 +1,12 @@
 ---
 - include: install/main.yml
+  tags: [rabbitmq]
 - include: configuration.yml
+  tags: [rabbitmq]
 - include: plugins.yml
+  tags: [rabbitmq]
 - include: vhost.yml
+  tags: [rabbitmq]
 - include: federation.yml
   when: rabbitmq_federation
+  tags: [rabbitmq]
