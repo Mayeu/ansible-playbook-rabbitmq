@@ -1,15 +1,9 @@
-# Announce
+# UNMAINTAINED
 
-Long time no update. I'm back on this playbook again, I'll be merging fixes (url,
-key checking,...) in master and releasing a working tagged version.
+This playbook is not maintained anymore. I ma not using it since a long time,
+nor do I have time to maintain it.
 
-Then I'll focus on creating a next branche that will be the version 2.0 of this
-playbook. The main things I plan to do with the version 2 is going to separate
-the installation steps from the pure configuration. I don't want to support a
-gazillion OS in one playbook. Thus, you'll be able to make a
-ansible-playbook-rabbitmq-install-my-little-snowflak-os yourself :)
-
-Thank you all for all the participation!
+Feel free to fork if you wish. If you want I can even advertise your fork here.
 
 # Rabbitmq Playbook
 
