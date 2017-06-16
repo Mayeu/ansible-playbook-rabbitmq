@@ -18,6 +18,11 @@
   tags:
     - rabbitmq
 
+- name: add user for rabbitmq
+  include: user.yml
+  tags:
+    - rabbitmq
+
 - name: add federation plugin
   include: federation.yml
   when: rabbitmq_federation
