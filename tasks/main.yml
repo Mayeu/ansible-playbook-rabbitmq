@@ -13,6 +13,13 @@
   tags:
     - rabbitmq
 
-- include: vhost.yml
-- include: federation.yml
+- name: add vhost for rabbitmq
+  include: vhost.yml
+  tags:
+    - rabbitmq
+
+- name: add federation plugin
+  include: federation.yml
   when: rabbitmq_federation
+  tags:
+    - rabbitmq
