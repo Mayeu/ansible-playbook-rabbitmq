@@ -1,7 +1,18 @@
 ---
-- include: install/main.yml
-- include: configuration.yml
-- include: plugins.yml
+- name: install rabbitmq
+  include: install/main.yml
+  tags:
+    - rabbitmq
+- name: configure rabbitmq
+  include: configuration.yml
+  tags:
+    - rabbitmq
+
+- name: install plugins
+  include: plugins.yml
+  tags:
+    - rabbitmq
+
 - include: vhost.yml
 - include: federation.yml
   when: rabbitmq_federation
