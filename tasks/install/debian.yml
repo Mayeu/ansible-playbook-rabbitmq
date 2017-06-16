@@ -15,6 +15,4 @@
 
 - name: install rabbitmq-server
   apt: name=rabbitmq-server update_cache=yes
-
-- name: enable rabbitmq-server to survive reboot
-  service: name=rabbitmq-server enabled=yes
+  notify: start rabbitmq-server

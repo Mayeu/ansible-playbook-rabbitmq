@@ -1,7 +1,8 @@
 ---
-# Debian install
-- include: debian.yml
+- name: Debian
+  include: debian.yml
   when: ansible_os_family == 'Debian'
 
-- include: redhat.yml
+- name: Redhat
+  include: redhat.yml
   when: ansible_os_family == 'RedHat'
