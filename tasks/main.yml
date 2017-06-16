@@ -18,8 +18,8 @@
   tags:
     - rabbitmq
 
-- name: add user for rabbitmq
-  include: user.yml
+- name: add users for rabbitmq
+  include: users.yml
   tags:
     - rabbitmq
 
