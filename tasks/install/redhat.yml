@@ -11,7 +11,7 @@
     - libselinux-python
 
 - name: install rabbitmq-server (RedHat)
-  yum: name=https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/rabbitmq-server-3.6.10-1.el6.noarch.rpm state=present
+  yum: name=https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/rabbitmq-server-3.6.10-1.el6.noarch.rpm state=present validate_certs=no
 
 - name: enable rabbitmq-server to survive reboot
   service: name=rabbitmq-server enabled=yes
