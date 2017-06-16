@@ -1,7 +1,4 @@
 ---
-- name: ensure rabbitmq is runned
-  service: name=rabbitmq-server state=started
-
 - name: add rabbitmq vhost
   rabbitmq_vhost: >
     name={{ item.name }}
